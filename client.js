@@ -6,7 +6,7 @@ function connection() {
 
 // config.endpoint = "~your Azure Cosmos DB account endpoint uri here~";
 
-const endpoint = "https://nikecosmos.documents.azure.com:443/";
+const endpoint = "https://Ncosmos.documents.azure.com:443/";
 const masterKey = "YNlpMSRAIYbPouQKFd0YKV0qf2zgbuN03Lxfs5xWb7huc5SbXpfQDRWuk7KhRXlD8CeY7oHsKUrjguJV2bBhOA==";
 
 
