@@ -1,5 +1,7 @@
 # A First try at Updating Documents in Cosmos with JavaScript and Azure Functions 
 
+This repo was helpful `https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement/app.js`
+
 Sample local.settings.json: 
 ```json
 {
