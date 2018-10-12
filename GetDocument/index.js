@@ -29,8 +29,8 @@ module.exports = async function (context, req) {
 
         var newEvent = { eventType : req.body.eventType, ts : req.body.ts }; 
 
-        var newDoc = JSON.parse(results); 
-        newDoc.yeah.events.push(newEvent); 
+        var newDoc = (results[0]); 
+        newDoc.content.events.push(newEvent); 
 
         const { body } = await container.items.upsert(newDoc);
 

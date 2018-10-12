@@ -23,7 +23,7 @@ module.exports = async function (context, req) {
 
     var databaseDefinition = { id: "sample database" };
     var collectionDefinition = { id: "sample collection" };
-    var documentDefinition = { sqtin: "123", id: "123", content: "Hello World! MWAHAHAA", yeah : req.body };
+    var documentDefinition = { sqtin: req.body.sqtin, id: req.body.id, content: req.body };
 
 
     async function helloCosmos() {
