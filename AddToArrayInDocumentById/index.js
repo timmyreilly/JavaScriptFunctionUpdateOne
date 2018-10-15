@@ -1,14 +1,19 @@
 
-const client = require('./../client');
+const cosmos = require('./../client');
+const client = cosmos.client; 
 
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
+    // Required Parameters: id, event object 
+    // Optional Parameters: database, collection name, other parameters... 
+
+    // If there are no documents in the DB with that ID we need to create a Document. 
+
 
     if (req.body.id) {
 
-
-        const { container, database } = await init("sample database", "sample collection"); 
+        const { container, database } = await cosmos.init("sample database", "sample collection"); 
 
         const querySpec = {
             query: "SELECT * FROM r WHERE r.id = @id",
@@ -21,7 +26,7 @@ module.exports = async function (context, req) {
         };
 
         const { result: results } = await client.database("sample database").container("sample collection").items.query(querySpec).toArray();
-
+        const { result: r } = await container.items.query(querySpec).toArray(); 
 
 
         var newEvent = { eventType : req.body.eventType, ts : req.body.ts }; 
@@ -48,8 +53,3 @@ module.exports = async function (context, req) {
     }
 };
 
-async function init(databaseId, containerId) {
-    const { database } = await client.databases.createIfNotExists({ id: databaseId });
-    const { container } = await database.containers.createIfNotExists({ id: containerId });
-    return { database, container };
-}

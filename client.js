@@ -14,7 +14,20 @@ const masterKey = process.env['cosmosKey'];
 const client = new cosmos.CosmosClient({endpoint, auth: {masterKey } });
 
 
-module.exports = client;
+async function init(databaseId, containerId) {
+    const { database } = await client.databases.createIfNotExists({ id: databaseId });
+    const { container } = await database.containers.createIfNotExists({ id: containerId });
+    return { database, container };
+}
+
+
+const c = {
+    client: client, 
+    init: init 
+}
+
+module.exports = c;
+
 
 
 
