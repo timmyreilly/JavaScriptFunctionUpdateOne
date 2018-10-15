@@ -5,10 +5,7 @@ module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
 
-    if (req.body.sqtin) {
-
-
-        // lets find that for you...
+    if (req.body.id) {
 
 
         const { container, database } = await init("sample database", "sample collection"); 
@@ -18,7 +15,7 @@ module.exports = async function (context, req) {
             parameters: [
                 {
                     name: "@id",
-                    value: req.body.sqtin.toString()
+                    value: req.body.id.toString()
                 }
             ]
         };
@@ -38,7 +35,7 @@ module.exports = async function (context, req) {
 
         context.res = {
             // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.sqtin || req.body.sqtin) + " " + JSON.stringify(results) + " " + JSON.stringify(body) 
+            body: "Hello " + (req.query.id || req.body.id) + " " + JSON.stringify(results) + " " + JSON.stringify(body) 
 
         };
         
@@ -46,7 +43,7 @@ module.exports = async function (context, req) {
     else {
         context.res = {
             status: 400,
-            body: "Please pass a sqtin on the query string or in the request body"
+            body: "Please pass a id on the query string or in the request body"
         };
     }
 };
