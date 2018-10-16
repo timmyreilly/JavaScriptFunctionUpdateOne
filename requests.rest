@@ -1,0 +1,13 @@
+
+###
+POST http://localhost:7071/api/AddToArrayInDocumentById HTTP/1.1
+content-type: application/json
+
+{
+	"id":1,
+	"eventType":"shmable number {{$randomInt 1 20}}",
+	"location":{"lat":14.8374,"lon":179.4715},
+	"ts":"{{$timestamp}}"
+}
+
+###
