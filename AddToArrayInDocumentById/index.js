@@ -31,11 +31,14 @@ module.exports = async function (context, req) {
         // create the event to append to events array in document: 
         const newEvent = { eventType : req.body.eventType, ts : req.body.ts }; 
 
-        // create an empty document to upsert if no id is found in collection: 
-        let blankEntry = { id : req.body.id.toString(), "events" : [] };
-
         // get the new document in place - either the result or a blank entry
-        let newDoc = results[0] || blankEntry; 
+        let newDoc = undefined; 
+        if(results[0]) {
+            newDoc = JSON.parse(JSON.stringify(results[0]))
+        } else {
+            // create an empty document to upsert if no id is found in collection: 
+            newDoc = { id : req.body.id.toString(), "events" : [] };
+        }
 
         // push our event from the request into the 'newish' document 
         newDoc.events.push(newEvent); 

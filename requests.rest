@@ -4,10 +4,19 @@ POST http://localhost:7071/api/AddToArrayInDocumentById HTTP/1.1
 content-type: application/json
 
 {
-	"id":1,
-	"eventType":"shmable number {{$randomInt 1 20}}",
+	"id":2,
+	"eventType":"shshshshshs number {{$randomInt 1 20}}",
 	"location":{"lat":14.8374,"lon":179.4715},
 	"ts":"{{$timestamp}}"
 }
 
 ###
+
+POST http://localhost:7071/api/UpdateFieldInDocument HTTP/1.1
+content-type: application/json
+
+{
+	"id":51,
+	"field" : "color",
+	"newValue" : "red crob"
+}
